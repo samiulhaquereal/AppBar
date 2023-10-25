@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Myapp(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -27,11 +28,18 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          drawer: Drawer(),
           appBar: AppBar(
             title: Text('Title',style: TextStyle(color: Colors.black),),
             backgroundColor: Colors.white,
             centerTitle: true,
-            //drawer: Drawer(),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: Icon(Icons.share),
+              )
+            ],
+            elevation: 0,
           ),
         ));
   }
