@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Myapp(),
+      home: Appbarr(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -44,4 +46,43 @@ class Myapp extends StatelessWidget {
         ));
   }
 }
+
+class Appbarr extends StatelessWidget {
+  const Appbarr({super.key});
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+          drawer: Drawer(),
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            title: Text('Home',style: TextStyle(color: Colors.black),),
+            backgroundColor: Colors.white.withAlpha(200),
+            centerTitle: true,
+            elevation: 0,
+            flexibleSpace: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaY: 10,sigmaX: 10),
+                child: Container(color: Colors.transparent,),
+              ),
+            ),
+          ),
+          body: Container(
+            child: ListView.builder(
+              itemCount: 20,
+                itemBuilder: (context,index){
+                  return ListTile(
+                    title: Text('Real - ${index+1}'),
+                    subtitle: Text('subtitle : '),
+                    leading: CircleAvatar(backgroundColor: Colors.red,),
+                  );
+                }),
+          ),
+        ));
+  }
+}
+
 
